@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Farha ❤️</title>
+
+<style>
+body {
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a0000, #000000);
+    color:white;
+    overflow:hidden;
+}
+
+/* Royal Elegant Background */
+body::before {
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+    opacity:0.18;
+    z-index:-1;
+}
+
+.page {
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.box {
+    background:rgba(0,0,0,0.75);
+    padding:30px;
+    border-radius:20px;
+    border:2px solid gold;
+    box-shadow:0 0 30px gold;
+    max-width:400px;
+    width:90%;
+}
+
+button {
+    padding:10px 25px;
+    margin:12px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes {
+    background:gold;
+    color:black;
+    font-weight:bold;
+}
+
+.no {
+    background:#555;
+    color:white;
+    position:relative;
+}
+
+/* Falling Roses */
+.rose {
+    position:fixed;
+    top:-40px;
+    font-size:22px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+/* Fireworks */
+.firework {
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:gold;
+    border-radius:50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    to {
+        transform:translate(var(--x), var(--y));
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Soft Romantic Instrumental -->
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3d1c13f9b7.mp3?filename=arabic-music-110624.mp3" type="audio/mpeg">
+</audio>
+
+<div class="page">
+    <div class="box">
+        <h1 style="color:gold;">Farha ❤️</h1>
+        <p>You are very special to me.</p>
+        <h2>Will you be my Valentine?</h2>
+        <button class="yes" onclick="celebrate()">Yes 💖</button>
+        <button class="no" id="noBtn">No</button>
+    </div>
+</div>
+
+<script>
+
+// Make NO button move away
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", function(){
+    noBtn.style.position="absolute";
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+});
+
+// Falling Roses
+function createRose(){
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerHTML="🌹";
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(rose);
+    setTimeout(()=>rose.remove(),8000);
+}
+setInterval(createRose,500);
+
+// Fireworks Celebration
+function celebrate(){
+    document.body.innerHTML = `
+    <div class="page">
+        <h1 style="color:gold;">She Said YES! 💖</h1>
+        <h2>This is the best day ever 🎉</h2>
+    </div>
+    `;
+    for(let i=0;i<80;i++){
+        let fire = document.createElement("div");
+        fire.classList.add("firework");
+        fire.style.left="50%";
+        fire.style.top="50%";
+        fire.style.setProperty('--x', (Math.random()*600-300)+"px");
+        fire.style.setProperty('--y', (Math.random()*600-300)+"px");
+        document.body.appendChild(fire);
+        setTimeout(()=>fire.remove(),1000);
+    }
+}
+
+</script>
+
+</body>
+</html>
